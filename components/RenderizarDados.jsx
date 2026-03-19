@@ -1,10 +1,11 @@
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 
-export default ({nomeAluno,eAluno})=>{
+export default ({nomeAluno,cAluno, disciAluno})=>{
     return(
         <View>
-            <Text>Nome Aluno:{nomeAluno}</Text>
-            <Text>Email Aluno:{eAluno}</Text>
+            <Text>Nome do Aluno: {nomeAluno}</Text>
+            <Text>Curso do aluno: {cAluno}</Text>
+            <Text>A matéria favorita do aluno: {disciAluno} </Text>
         </View>
         
     )

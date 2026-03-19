@@ -2,21 +2,28 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,Image,TextInput,Button } from 'react-native';
 import { useState } from 'react';
 import RenderizarDados from "./components/RenderizarDados.jsx"
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
   const[nomeAluno,setNomeAluno]=useState("")
-  const[emailAluno,setEmailAluno]=useState("")
+  const[cursoAluno,setCursoAluno]=useState("")
+  const [disciplinaAluno, setDisciplinaAluno] = useState("");
+  const [descricaoAluno, setDescricao] = useState("");
   const[mostrarDados,setMostrarDados]=useState(false)
+  
 
   return (
-    <View style={styles.container}>
-     
+
+    <SafeAreaProvider> 
+      <SafeAreaView style={styles.container}>
+
       <TextInput 
         placeholder='Digite o seu nome'
         style={styles.input}
-        maxLength={10}
-        autoCapitalize='words'
+        maxLength={10} 
+        autoCapitalize='none'
         onChangeText={setNomeAluno}
+        value={nomeAluno}
       />
 
       <TextInput 
@@ -24,7 +31,8 @@ export default function App() {
         style={styles.input}
         maxLength={30}
         autoCapitalize='none'
-        onChangeText={setEmailAluno}
+        onChangeText={setCursoAluno}
+        value={cursoAluno}
       />
 
       <TextInput 
@@ -32,35 +40,53 @@ export default function App() {
         style={styles.input}
         maxLength={30}
         autoCapitalize='none'
-        onChangeText={setEmailAluno}
+        onChangeText={setDisciplinaAluno}
+        value={disciplinaAluno}
+      />
+
+      <TextInput 
+        placeholder='Faça uma breve descrição sobre o curso '
+        style={styles.inputDescricao}
+        numberOfLines={3}
+        multiline={true}
+        maxLength={60}
+        autoCapitalize='none'
+        onChangeText={setDescricao}
+        value={descricaoAluno}
       />
 
     <Button 
       title='Clique aqui para enviar'
       onPress={()=>setMostrarDados(!mostrarDados)}
     />
-
-    {mostrarDados&&<RenderizarDados nomeAluno={nomeAluno} eAluno={emailAluno}/>}
-
+        
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
+  </SafeAreaProvider>
+  
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    marginTop:200,
-    gap:10
+    padding: 20,
+    backgroundColor: "#B0E0E6",
+    justifyContent: 'center',
+    gap: 10,
   },
-  image:{
-    resizeMode:"center"
+  input: {
+    backgroundColor: "#ccc",
+    width: '100%',
+    borderRadius: 10,
+    padding: 10,
   },
-  input:{
-    backgroundColor:"#ccc",
-    width:300,
-    borderRadius:10
+  inputDescricao: {
+    backgroundColor: "#ccc",
+    width: '100%',
+    borderRadius: 10,
+    padding: 10,
+    height: 90,
+    textAlignVertical: 'top',
   }
 });
