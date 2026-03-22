@@ -5,13 +5,19 @@ import RenderizarDados from "./components/RenderizarDados.jsx"
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
-  const[nomeAluno,setNomeAluno]=useState("")
-  const[cAluno,setCursoAluno]=useState("")
+  const[nomeAluno,setNomeAluno]= useState("")
+  const[cAluno,setCursoAluno]= useState("")
   const [disciAluno, setDisciplinaAluno] = useState("");
   const [descAluno, setDescricao] = useState("");
-  const[mostrarDados,setMostrarDados]=useState(false)
-  const [dadosSalvos, setDadosSalvos] = useState(null)
+  const[mostrarDados,setMostrarDados]= useState(false)
+  const [dadosSalvos, setDadosSalvos]= useState(null)
 
+  // exibe no console apenas quando os dados forem salvos e exibidos
+  useEffect(() => {
+  if (dadosSalvos) {
+    console.log("Os dados foram salvos:", dadosSalvos);
+  }
+}, [dadosSalvos]);
 
   // obriga a pessoa preencher todos os campos
   const handleEnviar = () => { 
