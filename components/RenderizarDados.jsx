@@ -3,11 +3,22 @@ import { Text, View, StyleSheet} from "react-native";
 export default ({nomeAluno,cAluno, disciAluno, descAluno})=>{
     return(
         <View style={styles.box}>
-            <Text style={styles.titulo}>Respostas</Text>
-            <Text style={styles.resposta}>Nome do Aluno: {nomeAluno}</Text>
-            <Text style={styles.resposta}>Curso do aluno: {cAluno}</Text>
-            <Text style={styles.resposta}>A matéria favorita do aluno: {disciAluno} </Text>
-            <Text style={styles.resposta}>Descrição do aluno: {descAluno}</Text>
+            <Text style={styles.titulo}>Descrição</Text>
+            <View style={styles.linha}>
+                <Text style={styles.label}>Nome do aluno:  <Text style={styles.valor}>{nomeAluno}</Text></Text>
+            </View>
+
+            <View style={styles.linha}>
+                <Text style={styles.label}>Curso do aluno:  <Text style={styles.valor}>{cAluno}</Text></Text>
+            </View>
+
+            <View style={styles.linha}>
+              <Text style={styles.label}>Matéria favorita:  <Text style={styles.valor}>{disciAluno}</Text></Text>
+            </View>
+
+            <View style={styles.linha}>
+              <Text style={styles.label}>Descrição:  <Text style={styles.valor}>{descAluno}</Text></Text>
+            </View>
         </View>
     )
 }
@@ -15,8 +26,8 @@ export default ({nomeAluno,cAluno, disciAluno, descAluno})=>{
 const styles = StyleSheet.create ({
 box: {
     width: '100%',
-    backgroundColor: '#0b112420',
-    marginTop: 50,
+    backgroundColor: '#3859c5fe',
+    marginTop: 20,
     padding: 20,
     borderRadius: 30,
     gap: 10,
@@ -30,7 +41,14 @@ titulo: {
     textAlign: 'center',
     letterSpacing: 1
 },
-resposta: {
-    
+label: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#000'
+},
+valor: {
+    fontSize: 14,
+    color: '#ffffff',
+    marginTop: 2
 }
 })

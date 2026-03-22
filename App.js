@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,Image,TextInput,Button, TextBase } from 'react-native';
-import { useState } from 'react';
+import { StyleSheet, Text, View,Image,TextInput,Button } from 'react-native';
+import { useState, useEffect } from 'react';
 import RenderizarDados from "./components/RenderizarDados.jsx"
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
@@ -11,7 +11,8 @@ export default function App() {
   const [descAluno, setDescricao] = useState("");
   const[mostrarDados,setMostrarDados]=useState(false)
   const [dadosSalvos, setDadosSalvos] = useState(null)
-  
+
+
   // obriga a pessoa preencher todos os campos
   const handleEnviar = () => { 
   if (
@@ -64,7 +65,7 @@ export default function App() {
       <TextInput 
         placeholder='Informe qual o seu curso'
         style={styles.input}
-        maxLength={30}
+        maxLength={50}
         autoCapitalize='none'
         onChangeText={setCursoAluno}
         value={cAluno}
@@ -74,7 +75,7 @@ export default function App() {
       <TextInput 
         placeholder='Informe qual a sua disciplina favorita'
         style={styles.input}
-        maxLength={30}
+        maxLength={40}
         autoCapitalize='none'
         onChangeText={setDisciplinaAluno}
         value={disciAluno}
@@ -117,7 +118,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 10,
     padding: 20,
-    backgroundColor: "#445ea7",
+    backgroundColor: "#3f4eaa",
     justifyContent: 'flex-start',
     gap: 10,
   },
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
   },
   boxForm: {
     width: '100%',
-    backgroundColor: '#0b112420',
+    backgroundColor: '#3859c5fe',
     padding: 20,
     borderRadius: 30,
     gap: 12,
