@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,Image,TextInput,Button } from 'react-native';
+import { StyleSheet, Text, View,Image,TextInput,Button, TextBase } from 'react-native';
 import { useState } from 'react';
 import RenderizarDados from "./components/RenderizarDados.jsx"
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -16,6 +16,8 @@ export default function App() {
 
     <SafeAreaProvider> 
       <SafeAreaView style={styles.container}>
+        <Text style={styles.titulo}>Cadastro de Aluno</Text>
+        <Text style={styles.subtitulo}>Preencha seus dados aqui: </Text>
 
       <TextInput 
         placeholder='Digite o seu nome'
@@ -59,6 +61,7 @@ export default function App() {
       title='Clique aqui para enviar'
       onPress={()=>setMostrarDados(!mostrarDados)}
     />
+
         
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -69,24 +72,38 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 10,
     padding: 20,
-    backgroundColor: "#B0E0E6",
-    justifyContent: 'center',
+    backgroundColor: "#445ea7",
+    justifyContent: 'flex-start',
     gap: 10,
   },
   input: {
-    backgroundColor: "#ccc",
+    backgroundColor: "#838383",
     width: '100%',
     borderRadius: 10,
     padding: 10,
   },
   inputDescricao: {
-    backgroundColor: "#ccc",
+    backgroundColor: "#838383",
     width: '100%',
     borderRadius: 10,
     padding: 10,
     height: 90,
     textAlignVertical: 'top',
+  },
+  titulo: {
+    color: '#5c98c8',
+    fontSize: 26,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    letterSpacing: 2
+  },
+  subtitulo: {
+    color: '#ccc',
+    textAlign: 'center',
+    marginBottom: 30,
+    fontSize: 15,
+
   }
 });
