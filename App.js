@@ -6,9 +6,9 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
   const[nomeAluno,setNomeAluno]=useState("")
-  const[cursoAluno,setCursoAluno]=useState("")
-  const [disciplinaAluno, setDisciplinaAluno] = useState("");
-  const [descricaoAluno, setDescricao] = useState("");
+  const[cAluno,setCursoAluno]=useState("")
+  const [disciAluno, setDisciplinaAluno] = useState("");
+  const [descAluno, setDescricao] = useState(false);
   const[mostrarDados,setMostrarDados]=useState(false)
   
 
@@ -18,7 +18,9 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <Text style={styles.titulo}>Cadastro de Aluno</Text>
         <Text style={styles.subtitulo}>Preencha seus dados aqui: </Text>
+        
 
+        
       <TextInput 
         placeholder='Digite o seu nome'
         style={styles.input}
@@ -34,7 +36,7 @@ export default function App() {
         maxLength={30}
         autoCapitalize='none'
         onChangeText={setCursoAluno}
-        value={cursoAluno}
+        value={cAluno}
       />
 
       <TextInput 
@@ -43,7 +45,7 @@ export default function App() {
         maxLength={30}
         autoCapitalize='none'
         onChangeText={setDisciplinaAluno}
-        value={disciplinaAluno}
+        value={disciAluno}
       />
 
       <TextInput 
@@ -54,7 +56,7 @@ export default function App() {
         maxLength={60}
         autoCapitalize='none'
         onChangeText={setDescricao}
-        value={descricaoAluno}
+        value={descAluno}
       />
 
     <Button 
@@ -62,11 +64,19 @@ export default function App() {
       onPress={()=>setMostrarDados(!mostrarDados)}
     />
 
+    {mostrarDados && (
+  <RenderizarDados 
+    nomeAluno={nomeAluno}
+    cAluno={cAluno}
+    disciAluno={disciAluno}
+    descAluno={descAluno}
+  />
+)}
+
         
       <StatusBar style="auto" />
     </SafeAreaView>
   </SafeAreaProvider>
-  
   );
 }
 
@@ -104,6 +114,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 30,
     fontSize: 15,
-
-  }
+  },
 });
