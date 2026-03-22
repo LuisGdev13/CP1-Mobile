@@ -8,19 +8,20 @@ export default function App() {
   const[nomeAluno,setNomeAluno]=useState("")
   const[cAluno,setCursoAluno]=useState("")
   const [disciAluno, setDisciplinaAluno] = useState("");
-  const [descAluno, setDescricao] = useState(false);
+  const [descAluno, setDescricao] = useState("");
   const[mostrarDados,setMostrarDados]=useState(false)
   
 
   return (
-
     <SafeAreaProvider> 
       <SafeAreaView style={styles.container}>
         <Text style={styles.titulo}>Cadastro de Aluno</Text>
         <Text style={styles.subtitulo}>Preencha seus dados aqui: </Text>
         
 
-        
+      <View style={styles.boxForm}>  
+
+      <Text style={styles.textTitulo}>Nome</Text> 
       <TextInput 
         placeholder='Digite o seu nome'
         style={styles.input}
@@ -30,6 +31,7 @@ export default function App() {
         value={nomeAluno}
       />
 
+      <Text style={styles.textTitulo}>Curso</Text>
       <TextInput 
         placeholder='Digite qual seu curso'
         style={styles.input}
@@ -39,6 +41,7 @@ export default function App() {
         value={cAluno}
       />
 
+      <Text style={styles.textTitulo}>Disciplina</Text>
       <TextInput 
         placeholder='Digite sua disciplina favorita'
         style={styles.input}
@@ -48,6 +51,7 @@ export default function App() {
         value={disciAluno}
       />
 
+      <Text style={styles.textTitulo}>Descrição</Text>
       <TextInput 
         placeholder='Faça uma breve descrição sobre o curso '
         style={styles.inputDescricao}
@@ -58,11 +62,12 @@ export default function App() {
         onChangeText={setDescricao}
         value={descAluno}
       />
-
+    
     <Button 
       title='Clique aqui para enviar'
       onPress={()=>setMostrarDados(!mostrarDados)}
     />
+  </View>
 
     {mostrarDados && (
   <RenderizarDados 
@@ -70,9 +75,7 @@ export default function App() {
     cAluno={cAluno}
     disciAluno={disciAluno}
     descAluno={descAluno}
-  />
-)}
-
+  />)}
         
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -89,13 +92,13 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   input: {
-    backgroundColor: "#838383",
+    backgroundColor: "#a6a5a5",
     width: '100%',
     borderRadius: 10,
     padding: 10,
   },
   inputDescricao: {
-    backgroundColor: "#838383",
+    backgroundColor: "#a6a5a5",
     width: '100%',
     borderRadius: 10,
     padding: 10,
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
     textAlignVertical: 'top',
   },
   titulo: {
-    color: '#5c98c8',
+    color: '#3493e0',
     fontSize: 26,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -115,4 +118,18 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     fontSize: 15,
   },
+  boxForm: {
+    width: '100%',
+    backgroundColor: '#0b112420',
+    padding: 20,
+    borderRadius: 30,
+    gap: 10,
+    borderWidth: 2,
+    borderColor: '#ffffff'
+  },
+  textTitulo: {
+    fontSize: 17,
+    fontStyle: "italic",
+    fontWeight: 'bold'
+  }
 });
