@@ -9,7 +9,6 @@ export default ({nomeAluno,cAluno, disciAluno, descAluno})=>{
             <Text>A matéria favorita do aluno: {disciAluno} </Text>
             <Text>Descrição do aluno: {descAluno}</Text>
         </View>
-        
     )
 }
 

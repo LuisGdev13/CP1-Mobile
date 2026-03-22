@@ -11,6 +11,20 @@ export default function App() {
   const [descAluno, setDescricao] = useState("");
   const[mostrarDados,setMostrarDados]=useState(false)
   
+  // obriga a pessoa preencher todos os campos
+  const handleEnviar = () => { 
+  if (
+    nomeAluno.trim() === "" ||
+    cAluno.trim() === "" ||
+    disciAluno.trim() === "" ||
+    descAluno.trim() === ""
+  ) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  setMostrarDados(true);
+};
 
   return (
     <SafeAreaProvider> 
@@ -64,8 +78,8 @@ export default function App() {
       />
     
     <Button 
-      title='Clique aqui para enviar'
-      onPress={()=>setMostrarDados(!mostrarDados)}
+      title='Enviar'
+      onPress={handleEnviar}
     />
   </View>
 
@@ -106,7 +120,7 @@ const styles = StyleSheet.create({
     textAlignVertical: 'top',
   },
   titulo: {
-    color: '#3493e0',
+    color: '#ee9519',
     fontSize: 26,
     fontWeight: 'bold',
     textAlign: 'center',
