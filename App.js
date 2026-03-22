@@ -10,6 +10,7 @@ export default function App() {
   const [disciAluno, setDisciplinaAluno] = useState("");
   const [descAluno, setDescricao] = useState("");
   const[mostrarDados,setMostrarDados]=useState(false)
+  const [dadosSalvos, setDadosSalvos] = useState(null)
   
   // obriga a pessoa preencher todos os campos
   const handleEnviar = () => { 
@@ -22,6 +23,20 @@ export default function App() {
     alert("Preencha todos os campos!");
     return;
   }
+  
+  // Salva os dados
+  setDadosSalvos({
+    nome: nomeAluno,
+    curso: cAluno,
+    disciplina: disciAluno,
+    descricao: descAluno
+  });
+
+  // LIMPA OS INPUTS
+  setNomeAluno("");
+  setCursoAluno("");
+  setDisciplinaAluno("");
+  setDescricao("");
 
   setMostrarDados(true);
 };
@@ -29,7 +44,7 @@ export default function App() {
   return (
     <SafeAreaProvider> 
       <SafeAreaView style={styles.container}>
-        <Text style={styles.titulo}>Cadastro de Aluno</Text>
+        <Text style={styles.titulo}>Pesquisa de Satisfação</Text>
         <Text style={styles.subtitulo}>Preencha seus dados aqui: </Text>
         
 
@@ -37,7 +52,7 @@ export default function App() {
 
       <Text style={styles.textTitulo}>Nome</Text> 
       <TextInput 
-        placeholder='Digite o seu nome'
+        placeholder='Informe seu nome completo'
         style={styles.input}
         maxLength={10} 
         autoCapitalize='none'
@@ -47,7 +62,7 @@ export default function App() {
 
       <Text style={styles.textTitulo}>Curso</Text>
       <TextInput 
-        placeholder='Digite qual seu curso'
+        placeholder='Informe qual o seu curso'
         style={styles.input}
         maxLength={30}
         autoCapitalize='none'
@@ -57,7 +72,7 @@ export default function App() {
 
       <Text style={styles.textTitulo}>Disciplina</Text>
       <TextInput 
-        placeholder='Digite sua disciplina favorita'
+        placeholder='Informe qual a sua disciplina favorita'
         style={styles.input}
         maxLength={30}
         autoCapitalize='none'
@@ -67,7 +82,7 @@ export default function App() {
 
       <Text style={styles.textTitulo}>Descrição</Text>
       <TextInput 
-        placeholder='Faça uma breve descrição sobre o curso '
+        placeholder='Descreva sua opinião sobre o curso'
         style={styles.inputDescricao}
         numberOfLines={3}
         multiline={true}
@@ -83,13 +98,14 @@ export default function App() {
     />
   </View>
 
-    {mostrarDados && (
+    {mostrarDados && dadosSalvos && (
   <RenderizarDados 
-    nomeAluno={nomeAluno}
-    cAluno={cAluno}
-    disciAluno={disciAluno}
-    descAluno={descAluno}
-  />)}
+    nomeAluno={dadosSalvos.nome}
+    cAluno={dadosSalvos.curso}
+    disciAluno={dadosSalvos.disciplina}
+    descAluno={dadosSalvos.descricao}
+  />
+)};
         
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -129,15 +145,15 @@ const styles = StyleSheet.create({
   subtitulo: {
     color: '#ccc',
     textAlign: 'center',
-    marginBottom: 30,
-    fontSize: 15,
+    marginBottom: 15,
+    fontSize: 17,
   },
   boxForm: {
     width: '100%',
     backgroundColor: '#0b112420',
     padding: 20,
     borderRadius: 30,
-    gap: 10,
+    gap: 12,
     borderWidth: 2,
     borderColor: '#ffffff'
   },
